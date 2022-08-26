@@ -86,17 +86,17 @@ PartRenderer::PartRenderer(VkRenderPass normalPass, uint32_t normalSubpass,
 		.add_dynamic_state(VK_DYNAMIC_STATE_SCISSOR)
 		.build(transparentPass, transparentSubpass);
 
-	auto studs = g_textureCache->get_or_load<TextureLoader>("Studs", *g_renderContext,
-			"res://studs_diffuse.png", false, true);
-	auto studsNormal = g_textureCache->get_or_load<TextureLoader>("StudsNormal", *g_renderContext,
-			"res://studs_normal.png", false, true);
+	auto surface = g_textureCache->get_or_load<TextureLoader>("Surface", *g_renderContext,
+			"res://surface_diffuse.png", false, true);
+	auto surfaceNormal = g_textureCache->get_or_load<TextureLoader>("SurfaceNormal", *g_renderContext,
+			"res://surface_normal.png", false, true);
 
 	auto samplerCreateInfo = vkinit::sampler_create_info(VK_FILTER_LINEAR,
-			VK_SAMPLER_ADDRESS_MODE_REPEAT, studs->get_num_mip_maps());
+			VK_SAMPLER_ADDRESS_MODE_REPEAT, surface->get_num_mip_maps());
 	m_sampler = g_renderContext->sampler_create(samplerCreateInfo);
 
-	auto studsInfo = vkinit::descriptor_image_info(*studs->get_image_view(), *m_sampler);
-	auto studsNormalInfo = vkinit::descriptor_image_info(*studsNormal->get_image_view(),
+	auto studsInfo = vkinit::descriptor_image_info(*surface->get_image_view(), *m_sampler);
+	auto studsNormalInfo = vkinit::descriptor_image_info(*surfaceNormal->get_image_view(),
 			*m_sampler);
 	auto skyboxInfo = vkinit::descriptor_image_info(*m_skybox->get_image_view(), *m_sampler);
 
