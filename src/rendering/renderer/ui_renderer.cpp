@@ -328,7 +328,6 @@ void UIRenderer::fetch_rect_updates() {
 		// FIXME: use a min-heap for optimal sorting
 		updates.emplace_back(static_cast<size_t>(&info - rectInfoData));
 	});
-	int n = 0;
 	int minj = INT_MAX;
 	int maxj = 0;
 	g_ecs->clear_pool<ECS::Tag<"RectHierarchyUpdate"_hs>>();
@@ -338,13 +337,11 @@ void UIRenderer::fetch_rect_updates() {
 				minj = j;
 			group.swap(j, j - 1);
 			--j;
-			n++;
 		}
 		if (j > 0 && j > maxj)
 			maxj = j;
 	}
-	m_rectUpdateRanges.add({ static_cast<uint32_t>(minj), static_cast<uint32_t>(maxj) });
-	//printf("number of rects: %d\n", g_ecs->get_pool<Game::RectInstance>().size());
-	//printf("number of swaps: %d\n", n);
+	if (minj < maxj)
+		m_rectUpdateRanges.add({ static_cast<uint32_t>(minj), static_cast<uint32_t>(maxj) });
 }
 
