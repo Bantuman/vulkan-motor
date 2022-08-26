@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Retail|x64">
+      <Configuration>Retail</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DBC7D3B0-C769-FE86-B024-12DB9C6585D7}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Engine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\lib\</OutDir>
+    <IntDir>..\temp\Engine_Debug\</IntDir>
+    <TargetName>Engine_Debug</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\lib\</OutDir>
+    <IntDir>..\temp\Engine_Release\</IntDir>
+    <TargetName>Engine_Release</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
+    <OutDir>..\lib\</OutDir>
+    <IntDir>..\temp\Engine_Retail\</IntDir>
+    <TargetName>Engine_Retail</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>GLM_CONSTEXPR=constexpr;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;GLFW_INCLUDE_VULKAN;TINYGLTF_USE_RAPIDJSON;TINYGLTF_NO_STB_IMAGE_WRITE;_DEBUG;XM3_DEBUG;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN32_WINNT=0x0601;SYSTEM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;core;ecs;file;D:\SDK\Vulkan SDK 1-3-216-0\Include;..\third_party;..\third_party\VulkanMemoryAllocator;..\third_party\volk;..\third_party\spirv_reflect;..\third_party\tinygltf;..\third_party\stb;..\third_party\freetype2;..\third_party\harfbuzz;..\third_party\libpng16;..\third_party\ffmpeg-2.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>glfw3.lib;harfbuzz.lib;png16.lib;libbz2.lib;assimp-vc140-mtd.lib;VulkanMemoryAllocatord.lib;freetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\SDK\Vulkan SDK 1-3-216-0\Lib;..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>GLM_CONSTEXPR=constexpr;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;GLFW_INCLUDE_VULKAN;TINYGLTF_USE_RAPIDJSON;TINYGLTF_NO_STB_IMAGE_WRITE;_RELEASE;XM3_RELEASE;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN32_WINNT=0x0601;SYSTEM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;core;ecs;file;D:\SDK\Vulkan SDK 1-3-216-0\Include;..\third_party;..\third_party\VulkanMemoryAllocator;..\third_party\volk;..\third_party\spirv_reflect;..\third_party\tinygltf;..\third_party\stb;..\third_party\freetype2;..\third_party\harfbuzz;..\third_party\libpng16;..\third_party\ffmpeg-2.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>glfw3.lib;harfbuzz.lib;png16.lib;libbz2.lib;assimp-vc140-mt.lib;VulkanMemoryAllocator.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\SDK\Vulkan SDK 1-3-216-0\Lib;..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>GLM_CONSTEXPR=constexpr;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;GLFW_INCLUDE_VULKAN;TINYGLTF_USE_RAPIDJSON;TINYGLTF_NO_STB_IMAGE_WRITE;_RETAIL;XM3_RETAIL;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN32_WINNT=0x0601;SYSTEM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;core;ecs;file;D:\SDK\Vulkan SDK 1-3-216-0\Include;..\third_party;..\third_party\VulkanMemoryAllocator;..\third_party\volk;..\third_party\spirv_reflect;..\third_party\tinygltf;..\third_party\stb;..\third_party\freetype2;..\third_party\harfbuzz;..\third_party\libpng16;..\third_party\ffmpeg-2.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>glfw3.lib;harfbuzz.lib;png16.lib;libbz2.lib;assimp-vc140-mt.lib;VulkanMemoryAllocator.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\SDK\Vulkan SDK 1-3-216-0\Lib;..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="animation\animation.hpp" />
+    <ClInclude Include="animation\animator.hpp" />
+    <ClInclude Include="animation\attachment.hpp" />
+    <ClInclude Include="animation\bone_attachment.hpp" />
+    <ClInclude Include="animation\keyframe.hpp" />
+    <ClInclude Include="animation\rig.hpp" />
+    <ClInclude Include="animation\rig_component.hpp" />
+    <ClInclude Include="animation\rigged_mesh_component.hpp" />
+    <ClInclude Include="asset\animation_cache.hpp" />
+    <ClInclude Include="asset\asset_cache.hpp" />
+    <ClInclude Include="asset\cube_map_cache.hpp" />
+    <ClInclude Include="asset\font_cache.hpp" />
+    <ClInclude Include="asset\font_family_cache.hpp" />
+    <ClInclude Include="asset\geom_mesh_cache.hpp" />
+    <ClInclude Include="asset\rigged_mesh_cache.hpp" />
+    <ClInclude Include="asset\rigged_mesh_loader.hpp" />
+    <ClInclude Include="asset\scene_loader.hpp" />
+    <ClInclude Include="asset\texture_cache.hpp" />
+    <ClInclude Include="core\ambience.hpp" />
+    <ClInclude Include="core\ancestry_changed_callbacks.hpp" />
+    <ClInclude Include="core\application.hpp" />
+    <ClInclude Include="core\base_stream.hpp" />
+    <ClInclude Include="core\camera.hpp" />
+    <ClInclude Include="core\common.hpp" />
+    <ClInclude Include="core\components.hpp" />
+    <ClInclude Include="core\context_action.hpp" />
+    <ClInclude Include="core\data_model.hpp" />
+    <ClInclude Include="core\destroyed_callbacks.hpp" />
+    <ClInclude Include="core\events.hpp" />
+    <ClInclude Include="core\geom.hpp" />
+    <ClInclude Include="core\geom_instance.hpp" />
+    <ClInclude Include="core\geom_type.hpp" />
+    <ClInclude Include="core\hashed_string.hpp" />
+    <ClInclude Include="core\imageplane.hpp" />
+    <ClInclude Include="core\imageplane_instance.hpp" />
+    <ClInclude Include="core\instance.hpp" />
+    <ClInclude Include="core\instance_class.hpp" />
+    <ClInclude Include="core\instance_factory.hpp" />
+    <ClInclude Include="core\instance_handle.hpp" />
+    <ClInclude Include="core\instance_utils.hpp" />
+    <ClInclude Include="core\local.hpp" />
+    <ClInclude Include="core\logging.hpp" />
+    <ClInclude Include="core\memory.hpp" />
+    <ClInclude Include="core\mesh_geom.hpp" />
+    <ClInclude Include="core\mesh_geom_instance.hpp" />
+    <ClInclude Include="core\model.hpp" />
+    <ClInclude Include="core\normal_id.hpp" />
+    <ClInclude Include="core\pair.hpp" />
+    <ClInclude Include="core\profiler.hpp" />
+    <ClInclude Include="core\profiler_frontend.hpp" />
+    <ClInclude Include="core\sky.hpp" />
+    <ClInclude Include="core\surface_type.hpp" />
+    <ClInclude Include="core\user_input.hpp" />
+    <ClInclude Include="core\utf8.hpp" />
+    <ClInclude Include="ecs\component_pool.hpp" />
+    <ClInclude Include="ecs\ecs.hpp" />
+    <ClInclude Include="ecs\ecs_fwd.hpp" />
+    <ClInclude Include="ecs\sparse_set.hpp" />
+    <ClInclude Include="ecs\type_id_generator.hpp" />
+    <ClInclude Include="ecs\view.hpp" />
+    <ClInclude Include="file\file.hpp" />
+    <ClInclude Include="file\file_system.hpp" />
+    <ClInclude Include="file\os_file.hpp" />
+    <ClInclude Include="file\os_file_system.hpp" />
+    <ClInclude Include="file\path_utils.hpp" />
+    <ClInclude Include="math\bone_transform.hpp" />
+    <ClInclude Include="math\color3.hpp" />
+    <ClInclude Include="math\color3uint8.hpp" />
+    <ClInclude Include="math\common.hpp" />
+    <ClInclude Include="math\geometric.hpp" />
+    <ClInclude Include="math\matrix.hpp" />
+    <ClInclude Include="math\matrix2x2.hpp" />
+    <ClInclude Include="math\matrix3x3.hpp" />
+    <ClInclude Include="math\matrix4x4.hpp" />
+    <ClInclude Include="math\matrix_projection.hpp" />
+    <ClInclude Include="math\quaternion.hpp" />
+    <ClInclude Include="math\rect.hpp" />
+    <ClInclude Include="math\transform.hpp" />
+    <ClInclude Include="math\transform2d.hpp" />
+    <ClInclude Include="math\trigonometric.hpp" />
+    <ClInclude Include="math\udim.hpp" />
+    <ClInclude Include="math\vector2.hpp" />
+    <ClInclude Include="math\vector3.hpp" />
+    <ClInclude Include="math\vector4.hpp" />
+    <ClInclude Include="net\web.hpp" />
+    <ClInclude Include="rendering\buffer.hpp" />
+    <ClInclude Include="rendering\buffer_component_pool.hpp" />
+    <ClInclude Include="rendering\buffer_vector.hpp" />
+    <ClInclude Include="rendering\command_buffer.hpp" />
+    <ClInclude Include="rendering\cube_map.hpp" />
+    <ClInclude Include="rendering\dds_texture.hpp" />
+    <ClInclude Include="rendering\descriptors.hpp" />
+    <ClInclude Include="rendering\font.hpp" />
+    <ClInclude Include="rendering\font_family.hpp" />
+    <ClInclude Include="rendering\font_stroke_type.hpp" />
+    <ClInclude Include="rendering\framebuffer.hpp" />
+    <ClInclude Include="rendering\freetype.hpp" />
+    <ClInclude Include="rendering\geom_mesh.hpp" />
+    <ClInclude Include="rendering\image.hpp" />
+    <ClInclude Include="rendering\image_descriptor_array.hpp" />
+    <ClInclude Include="rendering\image_view.hpp" />
+    <ClInclude Include="rendering\instance_bucket.hpp" />
+    <ClInclude Include="rendering\mesh.hpp" />
+    <ClInclude Include="rendering\pipeline_layout.hpp" />
+    <ClInclude Include="rendering\range_builder.hpp" />
+    <ClInclude Include="rendering\render_context.hpp" />
+    <ClInclude Include="rendering\render_pass.hpp" />
+    <ClInclude Include="rendering\render_pipeline.hpp" />
+    <ClInclude Include="rendering\render_utils.hpp" />
+    <ClInclude Include="rendering\renderer\game_renderer.hpp" />
+    <ClInclude Include="rendering\renderer\geom_renderer.hpp" />
+    <ClInclude Include="rendering\renderer\imageplane_renderer.hpp" />
+    <ClInclude Include="rendering\renderer\rigged_mesh_renderer.hpp" />
+    <ClInclude Include="rendering\renderer\skybox_renderer.hpp" />
+    <ClInclude Include="rendering\renderer\ui_renderer.hpp" />
+    <ClInclude Include="rendering\rigged_mesh.hpp" />
+    <ClInclude Include="rendering\sampler.hpp" />
+    <ClInclude Include="rendering\shader_program.hpp" />
+    <ClInclude Include="rendering\staging_context.hpp" />
+    <ClInclude Include="rendering\static_mesh.hpp" />
+    <ClInclude Include="rendering\text_bitmap.hpp" />
+    <ClInclude Include="rendering\texture.hpp" />
+    <ClInclude Include="rendering\vk_common.hpp" />
+    <ClInclude Include="rendering\vk_initializers.hpp" />
+    <ClInclude Include="rendering\vk_profiler.hpp" />
+    <ClInclude Include="ui\font_id.hpp" />
+    <ClInclude Include="ui\frame.hpp" />
+    <ClInclude Include="ui\game_ui.hpp" />
+    <ClInclude Include="ui\gui_button.hpp" />
+    <ClInclude Include="ui\gui_image_emitter.hpp" />
+    <ClInclude Include="ui\gui_object.hpp" />
+    <ClInclude Include="ui\gui_object_ancestry_changed.hpp" />
+    <ClInclude Include="ui\image_button.hpp" />
+    <ClInclude Include="ui\image_gui_object.hpp" />
+    <ClInclude Include="ui\image_label.hpp" />
+    <ClInclude Include="ui\resizable_rect.hpp" />
+    <ClInclude Include="ui\rich_text.hpp" />
+    <ClInclude Include="ui\scrolling_rect.hpp" />
+    <ClInclude Include="ui\text_box.hpp" />
+    <ClInclude Include="ui\text_button.hpp" />
+    <ClInclude Include="ui\text_gui_object.hpp" />
+    <ClInclude Include="ui\text_label.hpp" />
+    <ClInclude Include="ui\ui_components.hpp" />
+    <ClInclude Include="ui\ui_enumerations.hpp" />
+    <ClInclude Include="ui\ui_render_components.hpp" />
+    <ClInclude Include="ui\viewport_gui.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\third_party\spirv_reflect\spirv_reflect.c" />
+    <ClCompile Include="..\third_party\stb\stb_image.cpp" />
+    <ClCompile Include="..\third_party\stb\stb_truetype.cpp" />
+    <ClCompile Include="..\third_party\tinygltf\tiny_gltf.cpp" />
+    <ClCompile Include="..\third_party\vkbootstrap\VkBootstrap.cpp" />
+    <ClCompile Include="..\third_party\volk\volk.c" />
+    <ClCompile Include="animation\animation.cpp" />
+    <ClCompile Include="animation\animator.cpp" />
+    <ClCompile Include="animation\attachment.cpp" />
+    <ClCompile Include="animation\bone_attachment.cpp" />
+    <ClCompile Include="animation\rig.cpp" />
+    <ClCompile Include="animation\rig_component.cpp" />
+    <ClCompile Include="asset\rigged_mesh_loader.cpp" />
+    <ClCompile Include="asset\scene_loader.cpp" />
+    <ClCompile Include="asset\scene_loader_assimp.cpp" />
+    <ClCompile Include="core\ambience.cpp" />
+    <ClCompile Include="core\ancestry_changed_callbacks.cpp" />
+    <ClCompile Include="core\application.cpp" />
+    <ClCompile Include="core\camera.cpp" />
+    <ClCompile Include="core\components.cpp" />
+    <ClCompile Include="core\context_action.cpp" />
+    <ClCompile Include="core\data_model.cpp" />
+    <ClCompile Include="core\destroyed_callbacks.cpp" />
+    <ClCompile Include="core\geom.cpp" />
+    <ClCompile Include="core\imageplane.cpp" />
+    <ClCompile Include="core\instance.cpp" />
+    <ClCompile Include="core\instance_factory.cpp" />
+    <ClCompile Include="core\instance_utils.cpp" />
+    <ClCompile Include="core\logging.cpp" />
+    <ClCompile Include="core\mesh_geom.cpp" />
+    <ClCompile Include="core\model.cpp" />
+    <ClCompile Include="core\profiler.cpp" />
+    <ClCompile Include="core\profiler_frontend.cpp" />
+    <ClCompile Include="core\sky.cpp" />
+    <ClCompile Include="core\utf8.cpp" />
+    <ClCompile Include="ecs\ecs.cpp" />
+    <ClCompile Include="file\file_system.cpp" />
+    <ClCompile Include="file\os_file.cpp" />
+    <ClCompile Include="file\os_file_system.cpp" />
+    <ClCompile Include="file\path_utils.cpp" />
+    <ClCompile Include="math\bone_transform.cpp" />
+    <ClCompile Include="net\web.cpp" />
+    <ClCompile Include="rendering\buffer.cpp" />
+    <ClCompile Include="rendering\command_buffer.cpp" />
+    <ClCompile Include="rendering\cube_map.cpp" />
+    <ClCompile Include="rendering\dds_texture.cpp" />
+    <ClCompile Include="rendering\descriptors.cpp" />
+    <ClCompile Include="rendering\font.cpp" />
+    <ClCompile Include="rendering\font_family.cpp" />
+    <ClCompile Include="rendering\framebuffer.cpp" />
+    <ClCompile Include="rendering\geom_mesh.cpp" />
+    <ClCompile Include="rendering\image.cpp" />
+    <ClCompile Include="rendering\image_descriptor_array.cpp" />
+    <ClCompile Include="rendering\image_view.cpp" />
+    <ClCompile Include="rendering\instance_bucket.cpp" />
+    <ClCompile Include="rendering\mesh_assimp.cpp" />
+    <ClCompile Include="rendering\pipeline_layout.cpp" />
+    <ClCompile Include="rendering\range_builder.cpp" />
+    <ClCompile Include="rendering\render_context.cpp" />
+    <ClCompile Include="rendering\render_pass.cpp" />
+    <ClCompile Include="rendering\render_pipeline.cpp" />
+    <ClCompile Include="rendering\renderer\game_renderer.cpp" />
+    <ClCompile Include="rendering\renderer\geom_renderer.cpp" />
+    <ClCompile Include="rendering\renderer\imageplane_renderer.cpp" />
+    <ClCompile Include="rendering\renderer\rigged_mesh_renderer.cpp" />
+    <ClCompile Include="rendering\renderer\skybox_renderer.cpp" />
+    <ClCompile Include="rendering\renderer\ui_renderer.cpp" />
+    <ClCompile Include="rendering\rigged_mesh.cpp" />
+    <ClCompile Include="rendering\sampler.cpp" />
+    <ClCompile Include="rendering\shader_program.cpp" />
+    <ClCompile Include="rendering\staging_context.cpp" />
+    <ClCompile Include="rendering\static_mesh.cpp" />
+    <ClCompile Include="rendering\text_bitmap.cpp" />
+    <ClCompile Include="rendering\texture.cpp" />
+    <ClCompile Include="rendering\vk_initializers.cpp" />
+    <ClCompile Include="rendering\vk_profiler.cpp" />
+    <ClCompile Include="ui\font_id.cpp" />
+    <ClCompile Include="ui\frame.cpp" />
+    <ClCompile Include="ui\game_ui.cpp" />
+    <ClCompile Include="ui\gui_button.cpp" />
+    <ClCompile Include="ui\gui_image_emitter.cpp" />
+    <ClCompile Include="ui\gui_object.cpp" />
+    <ClCompile Include="ui\image_button.cpp" />
+    <ClCompile Include="ui\image_gui_object.cpp" />
+    <ClCompile Include="ui\resizable_rect.cpp" />
+    <ClCompile Include="ui\rich_text.cpp" />
+    <ClCompile Include="ui\scrolling_rect.cpp" />
+    <ClCompile Include="ui\text_box.cpp" />
+    <ClCompile Include="ui\text_button.cpp" />
+    <ClCompile Include="ui\text_gui_object.cpp" />
+    <ClCompile Include="ui\text_info_stream.cpp" />
+    <ClCompile Include="ui\text_label.cpp" />
+    <ClCompile Include="ui\viewport_gui.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="shaders\decals.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/decals.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\decals.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/decals.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\default_lit.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/default_lit.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\depth_reduce.comp">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/depth_reduce.comp.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\full_screen_triangle.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/full_screen_triangle.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\full_screen_triangle_no_texcoord.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/full_screen_triangle_no_texcoord.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\oit_resolve.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/oit_resolve.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_depth.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/part_depth.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_normal.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/part_normal.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_normal.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/part_normal.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_oit.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/part_oit.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_oit_ms.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/part_oit_ms.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_opaque_fastnormals.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/part_opaque_fastnormals.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_opaque_fastnormals.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/part_opaque_fastnormals.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_tr_test.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/part_tr_test.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_transparent.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/part_transparent.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\rigged_mesh.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/rigged_mesh.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\rigged_mesh.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/rigged_mesh.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\skybox.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/skybox.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\skybox.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/skybox.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\ssao.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/ssao.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\ssao_blur.comp">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/ssao_blur.comp.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\tone_map.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/tone_map.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\tone_map_oit_resolve.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/tone_map_oit_resolve.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\toon_part.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/toon_part.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\toon_rigged_mesh.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/toon_rigged_mesh.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\toon_rigged_mesh.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/toon_rigged_mesh.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\toon_rigged_mesh_outline.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/toon_rigged_mesh_outline.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\toon_rigged_mesh_outline.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/toon_rigged_mesh_outline.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\tri_mesh.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/tri_mesh.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\tri_mesh_old.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/tri_mesh_old.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\triangle.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/triangle.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\triangle.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/triangle.vert.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\ui_rect.frag">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/ui_rect.frag.spv</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="shaders\ui_rect.vert">
+      <FileType>Document</FileType>
+      <Command>"D:\SDK\Vulkan SDK 1-3-216-0/Bin/glslangValidator.exe" -V -o "../shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>../shaders/ui_rect.vert.spv</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

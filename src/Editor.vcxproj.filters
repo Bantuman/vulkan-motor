@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="editor">
+      <UniqueIdentifier>{AC2EC5FA-98D0-EFD0-818B-03256DCC7621}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui">
+      <UniqueIdentifier>{C3795900-AF05-880B-18B4-880B045F880B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="editor\editor_camera.hpp">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\editor_ui.hpp">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\properties.hpp">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\font_id.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\frame.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\game_ui.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\gui_button.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\gui_image_emitter.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\gui_object.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\gui_object_ancestry_changed.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\image_button.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\image_gui_object.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\image_label.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\resizable_rect.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\rich_text.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\scrolling_rect.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\text_box.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\text_button.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\text_gui_object.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\text_label.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\ui_components.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\ui_enumerations.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\ui_render_components.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\viewport_gui.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="editor\editor_camera.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\editor_ui.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\font_id.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\frame.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\game_ui.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\gui_button.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\gui_image_emitter.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\gui_object.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\image_button.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\image_gui_object.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\resizable_rect.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\rich_text.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\scrolling_rect.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\text_box.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\text_button.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\text_gui_object.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\text_info_stream.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\text_label.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\viewport_gui.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

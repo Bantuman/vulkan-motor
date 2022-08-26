@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="animation">
+      <UniqueIdentifier>{A5BE8E31-1129-43A8-5A67-F44DC61021FD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="asset">
+      <UniqueIdentifier>{454F1B0F-B163-43C0-7AE5-E61FE6B83FF1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{4E40957C-3A77-960D-E363-7C10CF79120F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ecs">
+      <UniqueIdentifier>{C06D880B-2C77-887C-B5F2-9E7C21FB937C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="file">
+      <UniqueIdentifier>{25CB967C-1102-980D-BAEE-7D10A604140F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="math">
+      <UniqueIdentifier>{CF809A7C-BBB7-9B0D-64A4-811050BA170F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net">
+      <UniqueIdentifier>{4C94880B-B89D-887C-4119-9F7CAD21947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rendering">
+      <UniqueIdentifier>{03CFAD0B-6F39-6282-B877-1328242140D7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rendering\renderer">
+      <UniqueIdentifier>{29428C14-1526-4D6A-7E86-47BD6A8937EC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{0F45D591-7B24-542D-843C-DF03F09ABA8E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party">
+      <UniqueIdentifier>{0FB18DF1-7B66-06E7-045B-00BE700FFDEA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\spirv_reflect">
+      <UniqueIdentifier>{366E5323-A230-87AD-EBE0-153A57E25F8B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\stb">
+      <UniqueIdentifier>{E75E2974-53EA-9638-5CFB-192DC805F338}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\tinygltf">
+      <UniqueIdentifier>{2FD2D297-1B61-5C61-C47F-705CB0ED6C07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\vkbootstrap">
+      <UniqueIdentifier>{7DF9ACAE-E930-F545-F23A-59695EF11B3F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\volk">
+      <UniqueIdentifier>{5ACD56F9-46C6-754B-6FF8-5AD05B505557}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui">
+      <UniqueIdentifier>{C3795900-AF05-880B-18B4-880B045F880B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="animation\animation.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="animation\animator.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="animation\attachment.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="animation\bone_attachment.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="animation\keyframe.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="animation\rig.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="animation\rig_component.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="animation\rigged_mesh_component.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="asset\animation_cache.hpp">
+      <Filter>asset</Filter>
+    </ClInclude>
+    <ClInclude Include="asset\asset_cache.hpp">
+      <Filter>asset</Filter>
+    </ClInclude>
+    <ClInclude Include="asset\cube_map_cache.hpp">
+      <Filter>asset</Filter>
+    </ClInclude>
+    <ClInclude Include="asset\font_cache.hpp">
+      <Filter>asset</Filter>
+    </ClInclude>
+    <ClInclude Include="asset\font_family_cache.hpp">
+      <Filter>asset</Filter>
+    </ClInclude>
+    <ClInclude Include="asset\geom_mesh_cache.hpp">
+      <Filter>asset</Filter>
+    </ClInclude>
+    <ClInclude Include="asset\rigged_mesh_cache.hpp">
+      <Filter>asset</Filter>
+    </ClInclude>
+    <ClInclude Include="asset\rigged_mesh_loader.hpp">
+      <Filter>asset</Filter>
+    </ClInclude>
+    <ClInclude Include="asset\scene_loader.hpp">
+      <Filter>asset</Filter>
+    </ClInclude>
+    <ClInclude Include="asset\texture_cache.hpp">
+      <Filter>asset</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ambience.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\ancestry_changed_callbacks.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\application.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\base_stream.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\camera.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\common.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\components.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\context_action.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\data_model.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\destroyed_callbacks.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\events.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geom.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geom_instance.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\geom_type.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\hashed_string.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\imageplane.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\imageplane_instance.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\instance.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\instance_class.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\instance_factory.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\instance_handle.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\instance_utils.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\local.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\logging.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\memory.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\mesh_geom.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\mesh_geom_instance.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\model.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\normal_id.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\pair.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\profiler.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\profiler_frontend.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\sky.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\surface_type.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\user_input.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\utf8.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs\component_pool.hpp">
+      <Filter>ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs\ecs.hpp">
+      <Filter>ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs\ecs_fwd.hpp">
+      <Filter>ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs\sparse_set.hpp">
+      <Filter>ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs\type_id_generator.hpp">
+      <Filter>ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs\view.hpp">
+      <Filter>ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="file\file.hpp">
+      <Filter>file</Filter>
+    </ClInclude>
+    <ClInclude Include="file\file_system.hpp">
+      <Filter>file</Filter>
+    </ClInclude>
+    <ClInclude Include="file\os_file.hpp">
+      <Filter>file</Filter>
+    </ClInclude>
+    <ClInclude Include="file\os_file_system.hpp">
+      <Filter>file</Filter>
+    </ClInclude>
+    <ClInclude Include="file\path_utils.hpp">
+      <Filter>file</Filter>
+    </ClInclude>
+    <ClInclude Include="math\bone_transform.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\color3.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\color3uint8.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\common.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\geometric.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\matrix.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\matrix2x2.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\matrix3x3.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\matrix4x4.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\matrix_projection.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\quaternion.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\rect.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\transform.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\transform2d.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\trigonometric.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\udim.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\vector2.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\vector3.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\vector4.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="net\web.hpp">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\buffer.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\buffer_component_pool.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\buffer_vector.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\command_buffer.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\cube_map.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\dds_texture.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\descriptors.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\font.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\font_family.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\font_stroke_type.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\framebuffer.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\freetype.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\geom_mesh.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\image.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\image_descriptor_array.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\image_view.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\instance_bucket.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\mesh.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\pipeline_layout.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\range_builder.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\render_context.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\render_pass.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\render_pipeline.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\render_utils.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\renderer\game_renderer.hpp">
+      <Filter>rendering\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\renderer\geom_renderer.hpp">
+      <Filter>rendering\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\renderer\imageplane_renderer.hpp">
+      <Filter>rendering\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\renderer\rigged_mesh_renderer.hpp">
+      <Filter>rendering\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\renderer\skybox_renderer.hpp">
+      <Filter>rendering\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\renderer\ui_renderer.hpp">
+      <Filter>rendering\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\rigged_mesh.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\sampler.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\shader_program.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\staging_context.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\static_mesh.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\text_bitmap.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\texture.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\vk_common.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\vk_initializers.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\vk_profiler.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\font_id.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\frame.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\game_ui.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\gui_button.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\gui_image_emitter.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\gui_object.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\gui_object_ancestry_changed.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\image_button.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\image_gui_object.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\image_label.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\resizable_rect.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\rich_text.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\scrolling_rect.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\text_box.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\text_button.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\text_gui_object.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\text_label.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\ui_components.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\ui_enumerations.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\ui_render_components.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\viewport_gui.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\third_party\spirv_reflect\spirv_reflect.c">
+      <Filter>third_party\spirv_reflect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\third_party\stb\stb_image.cpp">
+      <Filter>third_party\stb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\third_party\stb\stb_truetype.cpp">
+      <Filter>third_party\stb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\third_party\tinygltf\tiny_gltf.cpp">
+      <Filter>third_party\tinygltf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\third_party\vkbootstrap\VkBootstrap.cpp">
+      <Filter>third_party\vkbootstrap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\third_party\volk\volk.c">
+      <Filter>third_party\volk</Filter>
+    </ClCompile>
+    <ClCompile Include="animation\animation.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="animation\animator.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="animation\attachment.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="animation\bone_attachment.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="animation\rig.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="animation\rig_component.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="asset\rigged_mesh_loader.cpp">
+      <Filter>asset</Filter>
+    </ClCompile>
+    <ClCompile Include="asset\scene_loader.cpp">
+      <Filter>asset</Filter>
+    </ClCompile>
+    <ClCompile Include="asset\scene_loader_assimp.cpp">
+      <Filter>asset</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ambience.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\ancestry_changed_callbacks.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\application.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\camera.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\components.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\context_action.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\data_model.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\destroyed_callbacks.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\geom.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\imageplane.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\instance.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\instance_factory.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\instance_utils.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\logging.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\mesh_geom.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\model.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\profiler.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\profiler_frontend.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sky.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\utf8.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="ecs\ecs.cpp">
+      <Filter>ecs</Filter>
+    </ClCompile>
+    <ClCompile Include="file\file_system.cpp">
+      <Filter>file</Filter>
+    </ClCompile>
+    <ClCompile Include="file\os_file.cpp">
+      <Filter>file</Filter>
+    </ClCompile>
+    <ClCompile Include="file\os_file_system.cpp">
+      <Filter>file</Filter>
+    </ClCompile>
+    <ClCompile Include="file\path_utils.cpp">
+      <Filter>file</Filter>
+    </ClCompile>
+    <ClCompile Include="math\bone_transform.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="net\web.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\buffer.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\command_buffer.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\cube_map.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\dds_texture.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\descriptors.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\font.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\font_family.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\framebuffer.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\geom_mesh.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\image.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\image_descriptor_array.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\image_view.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\instance_bucket.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\mesh_assimp.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\pipeline_layout.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\range_builder.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\render_context.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\render_pass.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\render_pipeline.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\renderer\game_renderer.cpp">
+      <Filter>rendering\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\renderer\geom_renderer.cpp">
+      <Filter>rendering\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\renderer\imageplane_renderer.cpp">
+      <Filter>rendering\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\renderer\rigged_mesh_renderer.cpp">
+      <Filter>rendering\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\renderer\skybox_renderer.cpp">
+      <Filter>rendering\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\renderer\ui_renderer.cpp">
+      <Filter>rendering\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\rigged_mesh.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\sampler.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\shader_program.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\staging_context.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\static_mesh.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\text_bitmap.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\texture.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\vk_initializers.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\vk_profiler.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\font_id.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\frame.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\game_ui.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\gui_button.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\gui_image_emitter.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\gui_object.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\image_button.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\image_gui_object.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\resizable_rect.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\rich_text.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\scrolling_rect.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\text_box.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\text_button.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\text_gui_object.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\text_info_stream.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\text_label.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\viewport_gui.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="shaders\decals.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\decals.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\default_lit.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\depth_reduce.comp">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\full_screen_triangle.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\full_screen_triangle_no_texcoord.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\oit_resolve.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_depth.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_normal.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_normal.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_oit.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_oit_ms.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_opaque_fastnormals.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_opaque_fastnormals.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_tr_test.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\part_transparent.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\rigged_mesh.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\rigged_mesh.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\skybox.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\skybox.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\ssao.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\ssao_blur.comp">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\tone_map.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\tone_map_oit_resolve.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\toon_part.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\toon_rigged_mesh.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\toon_rigged_mesh.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\toon_rigged_mesh_outline.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\toon_rigged_mesh_outline.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\tri_mesh.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\tri_mesh_old.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\triangle.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\triangle.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\ui_rect.frag">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\ui_rect.vert">
+      <Filter>shaders</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

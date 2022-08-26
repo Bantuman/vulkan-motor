@@ -1,0 +1,17 @@
+{
+	"name": "Arial",
+	"faces": [
+		{
+			"name": "Regular",
+			"weight": 400,
+			"style": "normal",
+			"assetId": "res://fonts/arial.ttf"
+		},
+		{
+			"name": "Bold",
+			"weight": 700,
+			"style": "normal",
+			"assetId": "res://fonts/arialbd.ttf"
+		}
+	]
+}
