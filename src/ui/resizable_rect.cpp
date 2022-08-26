@@ -91,6 +91,7 @@ void Game::ResizableRect::update(ECS::Manager& ecs, Instance& selfInstance, cons
 void Game::ResizableRect::clear(ECS::Manager& ecs)
 {
 	GuiObject::clear(ecs);
+	try_remove_rect_raw(ecs, m_handleRect);
 }
 
 void Game::ResizableRect::redraw(ECS::Manager& ecs, RectOrderInfo orderInfo, const ViewportGui& viewportGui, const Math::Rect* clipRect)
