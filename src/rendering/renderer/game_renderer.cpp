@@ -38,7 +38,7 @@ GameRenderer::GameRenderer(RenderContext& ctx)
 		, m_sampleCount(VK_SAMPLE_COUNT_4_BIT) {
 	m_textBitmap.create();
 
-	Asset::load_scene("res://part.glb", Asset::LOAD_STATIC_MESHES_BIT
+	Asset::load_scene("res://geom.glb", Asset::LOAD_STATIC_MESHES_BIT
 			| Asset::LOAD_STATIC_MESHES_AS_PARTS_BIT);
 	Asset::load_scene("res://ball.glb", Asset::LOAD_STATIC_MESHES_BIT
 			| Asset::LOAD_STATIC_MESHES_AS_PARTS_BIT);
@@ -375,15 +375,24 @@ void GameRenderer::buffers_init() {
 	}
 
 	// FIXME: this probably belongs in lighting init
-	std::string_view skyboxFileNames[] = {
-		"res://sky512_ft.dds",
-		"res://sky512_bk.dds",
-		"res://sky512_up.dds",
-		"res://sky512_dn.dds",
-		"res://sky512_rt.dds",
-		"res://sky512_lf.dds",
-	};
+	//std::string_view skyboxFileNames[] = {
+	//	"res://sky512_ft.dds",
+	//	"res://sky512_bk.dds",
+	//	"res://sky512_up.dds",
+	//	"res://sky512_dn.dds",
+	//	"res://sky512_rt.dds",
+	//	"res://sky512_lf.dds",
+	//};
 
+
+	std::string_view skyboxFileNames[] = {
+		"res://space.png",
+		"res://space.png",
+		"res://space.png",
+		"res://space.png",
+		"res://space.png",
+		"res://space.png",
+	};
 	m_defaultSkybox = g_cubeMapCache->get_or_load<CubeMapLoader>("DefaultSkybox", *m_context,
 			skyboxFileNames, 6, false);
 	m_skybox = m_defaultSkybox;
