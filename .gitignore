@@ -3,6 +3,16 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+*.sln
+temp/*
+bin/*
+lib/Editor_Debug.lib
+lib/Editor_Release.lib
+lib/Engine_Debug.lib
+lib/Engine_Release.lib
+*.vcxproj
+*.vcxproj.filters
+
 # User-specific files
 *.rsuser
 *.suo
