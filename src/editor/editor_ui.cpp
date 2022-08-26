@@ -213,7 +213,7 @@ void EditorFrontend::init() {
 
 	CreateTextLabel({
 		.Text{"Treeview"},
-		.Font{Game::FontID::MSGOTHIC},
+		.Font{Game::FontID::ARIAL},
 		.FontSize{24u},
 		.ZIndex{12},
 		.Size{1.f, 0, 0.f, 64},
