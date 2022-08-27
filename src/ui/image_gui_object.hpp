@@ -24,7 +24,6 @@ class ImageGuiObject : public GuiImageEmitter {
 		float m_sliceScale;
 		Math::UDim2 m_tileSize;
 
-		// METHODS
 		// FIXME: maybe also a string&& version?
 		void set_image(ECS::Manager&, Instance& selfInstance, const std::string&);
 

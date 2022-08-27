@@ -54,6 +54,7 @@ enum class InstanceClass : uint32_t {
 	TEXT_BUTTON,
 	SCROLLING_RECT,
 	RESIZABLE_RECT,
+	VIDEO_RECT,
 
 	// UI Layouts
 	UI_GRID_STYLE_LAYOUT,

@@ -72,6 +72,8 @@ std::string_view Game::get_instance_class_name(InstanceClass id) {
 			return "ScrollingRect";
 		case InstanceClass::RESIZABLE_RECT:
 			return "ResizableRect";
+		case InstanceClass::VIDEO_RECT:
+			return "VideoRect";
 		case InstanceClass::ATTACHMENT:
 			return "Attachment";
 		case InstanceClass::BONE:
@@ -103,7 +105,8 @@ bool Game::instance_class_is_a(InstanceClass childToTest, InstanceClass baseClas
 					|| childToTest == Game::InstanceClass::IMAGE_RECT
 					|| childToTest == Game::InstanceClass::IMAGE_BUTTON
 					|| childToTest == Game::InstanceClass::SCROLLING_RECT
-					|| childToTest == Game::InstanceClass::RESIZABLE_RECT;
+					|| childToTest == Game::InstanceClass::RESIZABLE_RECT
+					|| childToTest == Game::InstanceClass::VIDEO_RECT;
 		case InstanceClass::BASE_GEOM:
 			return childToTest == InstanceClass::CUBE_GEOM
 					|| childToTest == InstanceClass::SLOPE_GEOM
@@ -190,6 +193,8 @@ static void try_init_name_to_id_map() {
 				InstanceClass::SCROLLING_RECT));
 		g_nameToIDMap.emplace(std::make_pair(std::string_view("ResizableRect"),
 			InstanceClass::RESIZABLE_RECT));
+		g_nameToIDMap.emplace(std::make_pair(std::string_view("VideoRect"),
+			InstanceClass::VIDEO_RECT));
 
 		g_nameToIDMap.emplace(std::make_pair(std::string_view("UIGridStyleLayout"),
 				InstanceClass::UI_GRID_STYLE_LAYOUT));

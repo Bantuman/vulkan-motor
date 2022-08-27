@@ -25,6 +25,8 @@ void Game::init_ancestry_changed_callbacks() {
 			= on_gui_object_ancestry_changed<ScrollingRect>;
 	Game::ancestryChangedCallbacks[static_cast<uint32_t>(InstanceClass::RESIZABLE_RECT)]
 		= on_gui_object_ancestry_changed<ResizableRect>;
+	Game::ancestryChangedCallbacks[static_cast<uint32_t>(InstanceClass::VIDEO_RECT)]
+		= on_gui_object_ancestry_changed<VideoRect>;
 
 	Game::ancestryChangedCallbacks[static_cast<uint32_t>(InstanceClass::IMAGE_PLANE)]
 			= ImagePlane::on_ancestry_changed;

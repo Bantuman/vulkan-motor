@@ -8,6 +8,7 @@
 #include <ui/image_label.hpp>
 #include <ui/image_button.hpp>
 #include <ui/scrolling_rect.hpp>
+#include <ui/video_rect.hpp>
 #include <ui/resizable_rect.hpp>
 
 namespace Game {

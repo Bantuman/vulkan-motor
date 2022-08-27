@@ -63,6 +63,9 @@ Instance* Game::InstanceFactory::create(ECS::Manager& ecs, InstanceClass id, ECS
 		case InstanceClass::RESIZABLE_RECT:
 			ecs.add_component<ResizableRect>(entity);
 			break;
+		case InstanceClass::VIDEO_RECT:
+			ecs.add_component<VideoRect>(entity);
+			break;
 		case InstanceClass::ATTACHMENT:
 			Attachment::create(ecs, entity);
 			break;

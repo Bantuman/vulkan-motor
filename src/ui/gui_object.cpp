@@ -671,6 +671,8 @@ GuiObject* Game::try_get_gui_object(ECS::Manager& ecs, ECS::Entity entity, Insta
 			return static_cast<GuiObject*>(&ecs.get_component<ScrollingRect>(entity));
 		case InstanceClass::RESIZABLE_RECT:
 			return static_cast<GuiObject*>(&ecs.get_component<ResizableRect>(entity));
+		case InstanceClass::VIDEO_RECT:
+			return static_cast<GuiObject*>(&ecs.get_component<VideoRect>(entity));
 		default:
 			return nullptr;
 	}
