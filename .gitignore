@@ -408,3 +408,4 @@ FodyWeavers.xsd
 *.sln.iml
 *.vcxproj
 *.idb
+*.lib
