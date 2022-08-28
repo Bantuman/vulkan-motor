@@ -172,6 +172,7 @@ class GameRenderer final {
 		void update_buffers();
 		void update_instances(CommandBuffer&);
 		void update_descriptors();
+		void update_videotextures(CommandBuffer&);
 
 		void depth_pre_pass(CommandBuffer&);
 		void reduce_depth(CommandBuffer&);

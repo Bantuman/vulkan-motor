@@ -26,6 +26,11 @@
 #include <rendering/vk_initializers.hpp>
 #include <rendering/vk_profiler.hpp>
 #include <rendering/render_utils.hpp>
+#include <rendering/video_texture.hpp>
+// FIXME: Try to abstract this better (lazy solution for now)
+#include <ui/video_rect.hpp>
+
+#include <ecs/ecs.hpp>
 
 static constexpr VkFormat g_depthFormat = VK_FORMAT_D32_SFLOAT;
 static constexpr VkFormat g_depthPyramidFormat = VK_FORMAT_R32_SFLOAT;
@@ -118,10 +123,67 @@ void GameRenderer::render() {
 		blur_ao(*cmd);
 		forward_pass(*cmd);
 		barrier_oit(*cmd);
+		update_videotextures(*cmd);
 		output_pass(*cmd);
 	}
 
 	m_context->frame_end();
+}
+
+void GameRenderer::update_videotextures(CommandBuffer& cmdb)
+{
+	VkCommandBuffer cmd = cmdb.get_buffer();
+	g_ecs->run_system<Game::VideoRect>([&](auto, Game::VideoRect& textureRect) {
+		std::shared_ptr<VideoTexture> texture = textureRect.get_texture();
+		if (!texture)
+			return;
+		std::shared_ptr<Image> m_image = texture->get_image();
+		std::shared_ptr<Buffer> m_buffer = texture->get_buffer();
+
+		VkImageSubresourceRange range{};
+		range.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+		range.baseMipLevel = 0;
+		range.levelCount = 1;
+		range.baseArrayLayer = 0;
+		range.layerCount = 1;
+
+		VkImageMemoryBarrier barrierToTransfer{};
+		barrierToTransfer.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+		barrierToTransfer.oldLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+		barrierToTransfer.newLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;
+		barrierToTransfer.image = m_image->get_image();
+		barrierToTransfer.subresourceRange = range;
+		barrierToTransfer.srcAccessMask = 0;
+		barrierToTransfer.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+
+		vkCmdPipelineBarrier(cmd, VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT,
+			VK_PIPELINE_STAGE_TRANSFER_BIT, 0, 0, nullptr, 0, nullptr,
+			1, &barrierToTransfer);
+
+		VkBufferImageCopy copy{};
+		copy.bufferOffset = 0;
+		copy.bufferRowLength = 0;
+		copy.bufferImageHeight = 0;
+		copy.imageSubresource.aspectMask = range.aspectMask;
+		copy.imageSubresource.mipLevel = range.baseMipLevel;
+		copy.imageSubresource.baseArrayLayer = range.baseArrayLayer;
+		copy.imageSubresource.layerCount = range.layerCount;
+		copy.imageExtent = m_image->get_extent();
+
+		vkCmdCopyBufferToImage(cmd, m_buffer->get_buffer(), m_image->get_image(),
+			VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &copy);
+
+		VkImageMemoryBarrier barrierToGraphics = barrierToTransfer;
+		barrierToGraphics.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;
+		barrierToGraphics.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+
+		barrierToGraphics.newLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
+		barrierToGraphics.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;
+
+		vkCmdPipelineBarrier(cmd, VK_PIPELINE_STAGE_TRANSFER_BIT,
+			VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, 0, 0, nullptr, 0, nullptr,
+			1, &barrierToGraphics);
+	});
 }
 
 void GameRenderer::update_camera(const Math::Vector3& position, const Math::Matrix4x4& view) {
