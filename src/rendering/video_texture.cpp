@@ -39,15 +39,14 @@ double get_real_fps(AVFormatContext * aContext, uint16_t aStream)
 	return fps;
 }
 
-VideoTexture::VideoTexture(std::shared_ptr<Image> image, std::shared_ptr<ImageView> imageView,
-	uint32_t numMipMaps)
-	: m_image(std::move(image))
-	, m_imageView(std::move(imageView))
-	, m_numMipMaps(numMipMaps) {}
-
 
 std::shared_ptr<Image> VideoTexture::get_image() const {
 	return m_image;
+}
+
+std::shared_ptr<Buffer> VideoTexture::get_buffer() const
+{
+	return m_buffer;
 }
 
 std::shared_ptr<ImageView> VideoTexture::get_image_view() const {
@@ -58,7 +57,7 @@ uint32_t VideoTexture::get_num_mip_maps() const {
 	return m_numMipMaps;
 }
 
-VideoTexture::FrameStatus VideoTexture::iterate_frame()
+FrameStatus VideoTexture::iterate_frame()
 {
 	int valid = false;
 	int readFrame = 0;
@@ -98,6 +97,8 @@ VideoTexture::FrameStatus VideoTexture::iterate_frame()
 	return readFrame < 0 ? FrameStatus::END_OR_ERROR : FrameStatus::ITERATE;
 }
 
+uint16_t prev_width;
+uint16_t prev_height;
 void VideoTexture::write_image(RenderContext& ctx, uint16_t width, uint16_t height)
 {
 	if (m_swsVideoContext)
@@ -113,35 +114,14 @@ void VideoTexture::write_image(RenderContext& ctx, uint16_t width, uint16_t heig
 
 		if (result > 0)
 		{
-			int* data = static_cast<int*>(m_buffer->map());
-			for (uint32_t x = m_videoCodecContext->height; x < width; ++x)
-			{
-				for (uint32_t y = m_videoCodecContext->width; y < height; ++y)
-				{
-					data[x * width + y] = 0;
-				}
-			}
-
-			int rgbIndex = 0;
-			for (uint32_t x = 0; x < m_videoCodecContext->height; ++x)
-			{
-				for (uint32_t y = 0; y < m_videoCodecContext->width; ++y)
-				{
-					{
-						uint8_t* data = m_avVideoFrameBGR->data[0];
-						data[x * width + y] = int((data[rgbIndex + 3]) << 24 |
-							(data[rgbIndex + 2]) << 16 |
-							(data[rgbIndex + 1]) << 8 |
-							(data[rgbIndex]));
-
-						rgbIndex += 4;
-					}
-				}
-			}
+			int* buffer = static_cast<int*>(m_buffer->map());
+			uint8_t* data = m_avVideoFrameBGR->data[0];
+			memcpy_s(buffer, m_numberBytes * sizeof(uint8_t), data, m_numberBytes * sizeof(uint8_t));
 			m_buffer->unmap();
 		}
 	}
-
+	prev_width = width;
+	prev_height = height;
 	m_frameCount++;
 }
 
@@ -172,14 +152,11 @@ void VideoTexture::set_frame(int64_t timestamp)
 }
 
 std::shared_ptr<VideoTexture> VideoTextureLoader::load(RenderContext& ctx, const std::string_view& fileName, bool srgb, bool generateMipmaps) {
-	std::vector<char> data = g_fileSystem->file_read_bytes(fileName);
-	RET_EMPTY(data.empty());
-	
 	std::shared_ptr<VideoTexture> video = std::make_shared<VideoTexture>();
 	AVFormatContext*& videoFormatContext = video->m_videoFormatContext;
-
+	
 	av_register_all();
-	auto result = avformat_open_input(&videoFormatContext, fileName.data(), NULL, NULL);
+	auto result = avformat_open_input(&videoFormatContext, g_fileSystem->get_file_system_path(fileName).data(), NULL, NULL);
 	RET_EMPTY(result < 0);
 
 	result = avformat_find_stream_info(videoFormatContext, NULL);
@@ -209,10 +186,10 @@ std::shared_ptr<VideoTexture> VideoTextureLoader::load(RenderContext& ctx, const
 
 		AVPixelFormat format = AV_PIX_FMT_RGBA;
 		video->m_numberBytes = avpicture_get_size(format, videoContext->width, videoContext->height);
-		video->m_videoBuffer = reinterpret_cast<uint8_t*>(av_malloc(video->m_numberBytes * sizeof(uint8_t)));
+		video->m_buffer = ctx.buffer_create(video->m_numberBytes * sizeof(uint8_t), VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_ONLY);
+		video->m_videoBuffer = reinterpret_cast<uint8_t*>(av_malloc(video->m_numberBytes * sizeof(uint8_t))); //reinterpret_cast<uint8_t*>(video->m_buffer->map());//
 		avpicture_fill(reinterpret_cast<AVPicture*>(video->m_avVideoFrameBGR), video->m_videoBuffer, format, videoContext->width, videoContext->height);
-
-		//m_buffer = ctx.buffer_create(video->m_numberBytes * sizeof(uint8_t), VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_GPU_ONLY);
+	//	video->m_buffer->unmap();
 		video->m_swsVideoContext = sws_getContext(
 			videoContext->width,
 			videoContext->height,
@@ -230,6 +207,42 @@ std::shared_ptr<VideoTexture> VideoTextureLoader::load(RenderContext& ctx, const
 	{
 		RET_EMPTY("m_videoCodecContext or m_videoCodec was nullptr");
 	}
+
+	VkExtent3D extents = {
+		static_cast<uint32_t>(video->m_videoCodecContext->width),
+		static_cast<uint32_t>(video->m_videoCodecContext->height),
+		1
+	};
+
+	VkFormat format = VK_FORMAT_R8G8B8A8_SRGB;
+
+	int usageFlags = VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT;
+
+	if (generateMipmaps) {
+		usageFlags |= VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
+	}
+
+	auto createInfo = vkinit::image_create_info(format, usageFlags, extents);
+	createInfo.mipLevels = 1;
+
+	auto image = ctx.image_create(createInfo, VMA_MEMORY_USAGE_GPU_ONLY);
+
+	if (!image) {
+		av_free(video->m_videoBuffer);
+		RET_EMPTY("!image");
+	}
+
+	auto imageView = ctx.image_view_create(image, VK_IMAGE_VIEW_TYPE_2D, format,
+		VK_IMAGE_ASPECT_COLOR_BIT, 1);
+
+	if (!imageView) {
+		av_free(video->m_videoBuffer);
+		RET_EMPTY("!imageView");
+	}
+
+	video->m_imageView = imageView;
+	video->m_image = image;
+
 	return video;
 }
 

@@ -15,20 +15,19 @@ extern "C"
 #include "ffmpeg-2.0/libswscale/swscale.h"
 }
 struct VideoTextureLoader;
-
+enum class FrameStatus
+{
+	ITERATE = 0,
+	END_OR_ERROR = 1
+};
 class VideoTexture {
-	enum class FrameStatus
-	{
-		ITERATE = 0,
-		END_OR_ERROR = 1
-	};
+
 	friend struct VideoTextureLoader;
 public:
-	VideoTexture(std::shared_ptr<Image> video, std::shared_ptr<ImageView> imageView,
-		uint32_t numMipMaps);
 	VideoTexture() = default;
 
 	std::shared_ptr<Image> get_image() const;
+	std::shared_ptr<Buffer> get_buffer() const;
 	std::shared_ptr<ImageView> get_image_view() const;
 	uint32_t get_num_mip_maps() const;
 
