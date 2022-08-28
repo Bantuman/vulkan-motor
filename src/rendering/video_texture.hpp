@@ -62,6 +62,7 @@ private:
 	uint8_t* m_videoBuffer;
 	AVPacket m_avPacket;
 
+	uint8_t m_validFrame;
 	size_t m_bufferIndex;
 	std::shared_ptr<Buffer> m_buffer[2];
 	std::shared_ptr<Image> m_image;

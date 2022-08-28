@@ -59,48 +59,39 @@ uint32_t VideoTexture::get_num_mip_maps() const {
 
 FrameStatus VideoTexture::iterate_frame()
 {
-	int valid = false;
 	int readFrame = 0;
-
-	while (!valid)
+	readFrame = av_read_frame(m_videoFormatContext, &m_avPacket);
+	if (readFrame >= 0)
 	{
-		readFrame = av_read_frame(m_videoFormatContext, &m_avPacket);
-		if (readFrame >= 0)
+		if (m_avPacket.stream_index == m_streamIndex)
 		{
-			if (m_avPacket.stream_index == m_streamIndex)
+			if (m_type == VideoType::FILE)
 			{
-				if (m_type == VideoType::FILE)
-				{
-					m_decodedBytes = avcodec_decode_video2(
-						m_videoCodecContext,
-						m_avVideoFrame,
-						&valid,
-						&m_avPacket);
-				}
+				m_decodedBytes = avcodec_decode_video2(
+					m_videoCodecContext,
+					m_avVideoFrame,
+					reinterpret_cast<int*>(&m_validFrame),
+					&m_avPacket);
+			}
 #ifdef USE_NET
-				// FIXME: Put this on a seperate thread
-				else
-				{
-					if (!m_avStream)
-					{
-						m_avStream = avformat_new_stream(m_videoFormatContext, m_videoFormatContext->streams[m_streamIndex]->codec->codec);
-						avcodec_copy_context(m_avStream->codec, m_videoCodecContext);
-						m_avStream->sample_aspect_ratio = m_videoFormatContext->streams[m_streamIndex]->sample_aspect_ratio;
-					}
-					m_avPacket.stream_index = m_avStream->id;
-					m_decodedBytes = avcodec_decode_video2(m_videoCodecContext, m_avVideoFrame, &valid, &m_avPacket);
-					av_free_packet(&m_avPacket);
-					av_init_packet(&m_avPacket);
-				}
-#endif
-			}
-			else if (/*FIXME: Implement audio*/ false)
+			// FIXME: Put this on a seperate thread
+			else
 			{
+				if (!m_avStream)
+				{
+					m_avStream = avformat_new_stream(m_videoFormatContext, m_videoFormatContext->streams[m_streamIndex]->codec->codec);
+					avcodec_copy_context(m_avStream->codec, m_videoCodecContext);
+					m_avStream->sample_aspect_ratio = m_videoFormatContext->streams[m_streamIndex]->sample_aspect_ratio;
+				}
+				m_avPacket.stream_index = m_avStream->id;
+				m_decodedBytes = avcodec_decode_video2(m_videoCodecContext, m_avVideoFrame, reinterpret_cast<int*>(&m_validFrame), &m_avPacket);
+				av_free_packet(&m_avPacket);
+				av_init_packet(&m_avPacket);
 			}
+#endif
 		}
-		else
+		else if (/*FIXME: Implement audio*/ false)
 		{
-			valid = true;
 		}
 		av_free_packet(&m_avPacket);
 	}
@@ -110,9 +101,9 @@ FrameStatus VideoTexture::iterate_frame()
 
 void VideoTexture::write_image(RenderContext& ctx, uint16_t width, uint16_t height)
 {
-	if (m_swsVideoContext)
+	m_bufferIndex = !m_bufferIndex;
+	if (m_swsVideoContext && m_validFrame)
 	{
-		m_bufferIndex = !m_bufferIndex;
 		if (m_type == VideoType::FILE)
 		{
 			auto result = sws_scale(
@@ -146,10 +137,10 @@ void VideoTexture::write_image(RenderContext& ctx, uint16_t width, uint16_t heig
 
 			if (result > 0)
 			{
-				//int* buffer = static_cast<int*>(m_buffer->map());
-				//uint8_t* data = m_avVideoFrameBGR->data[0];
-				//memcpy_s(buffer, m_numberBytes * sizeof(uint8_t), data, m_numberBytes * sizeof(uint8_t));
-				//m_buffer->unmap();
+				int* buffer = static_cast<int*>(m_buffer[m_bufferIndex]->map());
+				uint8_t* data = m_avVideoFrameBGR->data[0];
+				memcpy_s(buffer, m_numberBytes * sizeof(uint8_t), data, m_numberBytes * sizeof(uint8_t));
+				m_buffer[m_bufferIndex]->unmap();
 			}
 		}
 #endif
@@ -188,6 +179,7 @@ std::shared_ptr<VideoTexture> VideoTextureLoader::load(RenderContext& ctx, const
 	std::shared_ptr<VideoTexture> video = std::make_shared<VideoTexture>();
 	AVFormatContext*& videoFormatContext = video->m_videoFormatContext;
 
+	AVDictionary* options = NULL;
 	video->m_type = VideoType::FILE;
 	std::string filePath;
 #ifdef USE_NET
@@ -196,13 +188,20 @@ std::shared_ptr<VideoTexture> VideoTextureLoader::load(RenderContext& ctx, const
 	if (backend == "rtsp")
 	{
 		filePath = fileName;
+		av_dict_set(&options, "buffer_size", "102400000", 0);
+		av_dict_set(&options, "max_delay", "900000000", 0);
+		av_dict_set(&options, "rtsp_transport", "tcp", 0);
+		av_dict_set(&options, "stimeout", "900000000", 0);
 		video->m_type = VideoType::STREAM;
 	}
 	else
 #endif
 		filePath = g_fileSystem->get_file_system_path(fileName);
 	av_register_all();
-	auto result = avformat_open_input(&videoFormatContext, filePath.data(), NULL, NULL);
+
+
+
+	auto result = avformat_open_input(&videoFormatContext, filePath.data(), NULL, &options);
 	RET_EMPTY(result < 0);
 
 	result = avformat_find_stream_info(videoFormatContext, NULL);
@@ -255,7 +254,8 @@ std::shared_ptr<VideoTexture> VideoTextureLoader::load(RenderContext& ctx, const
 #ifdef USE_NET
 		else if (video->m_type == VideoType::STREAM)
 		{
-			AVPixelFormat format = AVPixelFormat::AV_PIX_FMT_RGB24;
+			vkFormat = VK_FORMAT_R8G8B8A8_UNORM;
+			AVPixelFormat format = AVPixelFormat::AV_PIX_FMT_RGBA; //  AVPixelFormat::AV_PIX_FMT_RGB24;
 			video->m_numberBytes = avpicture_get_size(format, videoContext->width, videoContext->height);
 			uint32_t paddedBytes = avpicture_get_size(AV_PIX_FMT_RGBA, videoContext->width, videoContext->height);
 			video->m_buffer[0] = ctx.buffer_create(paddedBytes * sizeof(uint8_t), VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_ONLY);
