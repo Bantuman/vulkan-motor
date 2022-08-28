@@ -20,6 +20,11 @@ enum class FrameStatus
 	ITERATE = 0,
 	END_OR_ERROR = 1
 };
+enum class VideoType
+{
+	FILE = 0,
+	STREAM = 1
+};
 class VideoTexture {
 
 	friend struct VideoTextureLoader;
@@ -50,13 +55,15 @@ private:
 	SwrContext* m_swsAudioContext;
 	AVFormatContext* m_videoFormatContext;
 
+	AVStream* m_avStream;
 	AVFrame* m_avVideoFrame;
 	AVFrame* m_avVideoFrameBGR;
 	AVFrame* m_avAudioFrame;
 	uint8_t* m_videoBuffer;
 	AVPacket m_avPacket;
 
-	std::shared_ptr<Buffer> m_buffer;
+	size_t m_bufferIndex;
+	std::shared_ptr<Buffer> m_buffer[2];
 	std::shared_ptr<Image> m_image;
 	std::shared_ptr<ImageView> m_imageView;
 	uint32_t m_numMipMaps;
@@ -64,6 +71,7 @@ private:
 	uint32_t m_decodedBytes;
 	uint32_t m_numberBytes;
 	uint16_t m_streamIndex;
+	VideoType m_type;
 };
 
 struct VideoTextureLoader {

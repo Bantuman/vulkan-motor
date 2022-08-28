@@ -48,7 +48,7 @@ void Game::VideoRect::update(ECS::Manager& ecs, Instance& selfInst, RenderContex
 		}
 
 		m_video->write_image(ctx, m_absoluteSize.x, m_absoluteSize.y);
-		mark_for_redraw(ecs, selfInst);
+		//mark_for_redraw(ecs, selfInst);
 		m_frameTimer -= 1.0 / fps;
 	}
 }

@@ -186,8 +186,8 @@ std::shared_ptr<ImageView> RenderContext::image_view_create(std::shared_ptr<Imag
 	return image_view_create(createInfo);
 }
 
-std::shared_ptr<ImageView> RenderContext::image_view_create(
-		const VkImageViewCreateInfo& createInfo) {
+
+std::shared_ptr<ImageView> RenderContext::image_view_create(const VkImageViewCreateInfo& createInfo) {
 	VkImageView imageView;
 	if (vkCreateImageView(device, &createInfo, nullptr, &imageView) == VK_SUCCESS) {
 		return std::make_shared<ImageView>(*this, imageView);
