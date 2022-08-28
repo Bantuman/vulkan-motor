@@ -14,7 +14,6 @@ extern "C"
 #include "ffmpeg-2.0/libswresample/swresample.h"
 #include "ffmpeg-2.0/libswscale/swscale.h"
 }
-
 struct VideoTextureLoader;
 
 class VideoTexture {
@@ -23,10 +22,11 @@ class VideoTexture {
 		ITERATE = 0,
 		END_OR_ERROR = 1
 	};
-	friend class VideoTextureLoader;
+	friend struct VideoTextureLoader;
 public:
-	explicit VideoTexture(std::shared_ptr<Image> video, std::shared_ptr<ImageView> imageView,
+	VideoTexture(std::shared_ptr<Image> video, std::shared_ptr<ImageView> imageView,
 		uint32_t numMipMaps);
+	VideoTexture() = default;
 
 	std::shared_ptr<Image> get_image() const;
 	std::shared_ptr<ImageView> get_image_view() const;

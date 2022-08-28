@@ -2,6 +2,7 @@
 
 #include <rendering/render_context.hpp>
 
+
 class Texture {
 	public:
 		explicit Texture(std::shared_ptr<Image> image, std::shared_ptr<ImageView> imageView,
@@ -18,6 +19,5 @@ class Texture {
 
 struct TextureLoader {
 	std::shared_ptr<Texture> load(RenderContext& ctx, const std::string_view& fileName, bool srgb,
-			bool generateMipmaps);
+		bool generateMipmaps);
 };
-

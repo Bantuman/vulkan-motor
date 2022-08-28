@@ -171,7 +171,6 @@ void VideoTexture::set_frame(int64_t timestamp)
 	av_seek_frame(m_videoFormatContext, m_streamIndex, timestamp, AVSEEK_FLAG_BACKWARD);
 }
 
-
 std::shared_ptr<VideoTexture> VideoTextureLoader::load(RenderContext& ctx, const std::string_view& fileName, bool srgb, bool generateMipmaps) {
 	std::vector<char> data = g_fileSystem->file_read_bytes(fileName);
 	RET_EMPTY(data.empty());
