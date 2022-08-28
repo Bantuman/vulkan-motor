@@ -73,6 +73,14 @@ project "Engine"
         "harfbuzz",
         "png16",
         "libbz2",
+        "avcodec",
+        "avdevice",
+        "avfilter",
+        "avformat",
+        "avutil",
+        "bass",
+        "swscale",
+        "swresample"
     }
 
     filter "configurations:Debug"
