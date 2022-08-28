@@ -98,6 +98,7 @@ void Game::update_ui(ECS::Manager& ecs, float deltaTime) {
 	resolve_transform_update<ImageButton>(ecs);
 	resolve_transform_update<ScrollingRect>(ecs);
 	resolve_transform_update<ResizableRect>(ecs);
+	resolve_transform_update<VideoRect>(ecs);
 
 	ecs.clear_pool<ECS::Tag<"GuiTransformUpdate"_hs>>();
 
@@ -246,6 +247,10 @@ static void update_dynamic_rects(ECS::Manager& ecs, const Math::Vector2& rawMous
 	{
 		uiObj.update(ecs, inst, uiEnt, mousePos, deltaTime);
 	});
+	ecs.run_system<VideoRect, Instance>([&](auto uiEnt, auto& uiObj, auto& inst)
+	{
+		uiObj.update(ecs, inst, *g_renderContext, deltaTime);
+	});
 }
 
 static void update_ui_input(ECS::Manager& ecs, const Math::Vector2& screenSize, const Math::Vector2& invScreen, float deltaTime) {
@@ -263,6 +268,7 @@ static void update_ui_input(ECS::Manager& ecs, const Math::Vector2& screenSize, 
 	update_mouse_occupancy<ImageButton>(ecs, mousePos, invScreen);
 	update_mouse_occupancy<ScrollingRect>(ecs, mousePos, invScreen);
 	update_mouse_occupancy<ResizableRect>(ecs, mousePos, invScreen);
+	update_mouse_occupancy<VideoRect>(ecs, mousePos, invScreen);
 
 	update_auto_button_color(ecs);
 	update_dynamic_rects(ecs, g_application->get_mouse_position(), mousePos, deltaTime);
