@@ -18,6 +18,7 @@
 #include <asset/font_cache.hpp>
 #include <asset/font_family_cache.hpp>
 #include <asset/animation_cache.hpp>
+#include <asset/video_cache.hpp>
 
 #include <core/application.hpp>
 #include <core/hashed_string.hpp>
@@ -90,6 +91,7 @@ int main(int argc, char** argv) {
 	g_geomMeshCache.create();
 	g_riggedMeshCache.create();
 	g_textureCache.create();
+	g_videoCache.create();
 	g_cubeMapCache.create();
 	g_fontCache.create();
 	g_fontFamilyCache.create();
@@ -293,9 +295,9 @@ int main(int argc, char** argv) {
 
 	Game::ProfilerFrontend::deinit();
 
-	g_renderer.destroy();
-
 	g_ecs.destroy();
+
+	g_renderer.destroy();
 
 	g_animationCache.destroy();
 	g_fontFamilyCache.destroy();
@@ -304,6 +306,7 @@ int main(int argc, char** argv) {
 	g_textureCache.destroy();
 	g_riggedMeshCache.destroy();
 	g_geomMeshCache.destroy();
+	g_videoCache.destroy();
 
 	g_renderContext.destroy();
 	g_application.destroy();
