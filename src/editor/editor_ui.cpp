@@ -168,6 +168,36 @@ void EditorFrontend::init() {
 	auto* instScreenGui = InstanceFactory::create(*g_ecs, InstanceClass::VIEWPORT_GUI, eScreenGui);
 	instScreenGui->m_name = "CoreEditorGui";
 
+	CreateVideoRect({
+		.Video{"res://test.mp4"},
+		.Looped{true},
+		.Size{0.f, 512, 0.f, 256},
+		.Position{1, -350, 0.f, 0},
+		.BackgroundColor{BACKGROUND_COLOR},
+		.OutlineColor{1, 0, 0},
+		.Transparency{0.f}
+	}, eScreenGui);
+
+	CreateVideoRect({
+		.Video{"res://test.gif"},
+		.Looped{true},
+		.Size{0.f, 400, 0.f, 225},
+		.Position{0, 150, 1.f, -350},
+		.BackgroundColor{BACKGROUND_COLOR},
+		.OutlineColor{0, 1, 0},
+		.Transparency{0.f}
+	}, eScreenGui);
+
+	CreateVideoRect({
+		.Video{"res://test.webm"},
+		.Looped{true},
+		.Size{0.f, 512, 0.f, 256},
+		.Position{0.5, -256, 0.5, -128},
+		.BackgroundColor{BACKGROUND_COLOR},
+		.OutlineColor{0, 0, 1},
+		.Transparency{0.f}
+	}, eScreenGui);
+
 	auto eTreeview = CreateResizableRect({
 		.Size{0.f, 150, 1.f, 0},
 		.Position{0, 0, 0.f, 0},

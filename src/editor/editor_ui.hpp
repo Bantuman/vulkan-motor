@@ -97,6 +97,40 @@ inline ECS::Entity CreateResizableRect(const ResizableRectCreationInfo& aFrameIn
 	return entity;
 }
 
+struct VideoRectCreationInfo
+{
+	const char* Video;
+	bool Looped;
+	const Math::UDim2 Size;
+	const Math::UDim2 Position;
+	const Math::Color3 BackgroundColor;
+	const Math::Color3 OutlineColor;
+	const std::optional<uint32_t> ZIndex;
+	float Transparency;
+};
+inline ECS::Entity CreateVideoRect(const VideoRectCreationInfo& aFrameInfo, const ECS::Entity aParent = ECS::INVALID_ENTITY)
+{
+	ECS::Entity entity;
+	auto& instance = *InstanceFactory::create(*g_ecs, InstanceClass::VIDEO_RECT, entity);
+
+	VideoRect& frame = g_ecs->get_component<VideoRect>(entity);
+	frame.set_position(*g_ecs, instance, entity, aFrameInfo.Position);
+	frame.set_size(*g_ecs, instance, aFrameInfo.Size);
+	frame.set_background_transparency(*g_ecs, instance, aFrameInfo.Transparency);
+	frame.set_background_color3(*g_ecs, aFrameInfo.BackgroundColor);
+	frame.set_clips_descendants(*g_ecs, instance, true);
+	frame.set_z_index(*g_ecs, instance, aFrameInfo.ZIndex.value_or(1));
+	frame.set_border_color3(*g_ecs, aFrameInfo.OutlineColor);
+	frame.set_video(*g_ecs, instance, aFrameInfo.Video);
+	frame.set_looping(aFrameInfo.Looped);
+
+	if (aParent != ECS::INVALID_ENTITY)
+	{
+		instance.set_parent(*g_ecs, aParent, entity);
+	}
+	return entity;
+}
+
 struct ScrollingRectCreationInfo
 {
 	const Math::UDim2 Size;
