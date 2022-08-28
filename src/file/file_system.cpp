@@ -2,14 +2,19 @@
 
 #include <path_utils.hpp>
 #include <os_file_system.hpp>
+#include <net/web_file_system.hpp>
 #include <file.hpp>
-
-#define MSVC
 
 FileSystem::FileSystem() {
 	add_backend("file", std::make_unique<OSFileSystem>("."));
 	add_backend("res", std::make_unique<OSFileSystem>("../res"));
 	add_backend("shaders", std::make_unique<OSFileSystem>("../shaders"));
+
+#ifdef USE_NET
+	add_backend("assetcache", std::make_unique<OSFileSystem>("../temp"));
+	add_backend("http", std::make_unique<WebFileSystem>());
+	add_backend("https", std::make_unique<WebFileSystem>());
+#endif
 }
 
 void FileSystem::add_backend(const std::string_view& scheme,
