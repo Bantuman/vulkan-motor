@@ -22,6 +22,7 @@ project "Engine"
     objdir("../temp/%{prj.name}_%{cfg.buildcfg}")
 
     defines {
+        "USE_NET",
         "GLM_CONSTEXPR=constexpr",
         "GLM_FORCE_RADIANS",
         "GLM_FORCE_DEPTH_ZERO_TO_ONE",
