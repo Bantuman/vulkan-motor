@@ -169,7 +169,7 @@ void EditorFrontend::init() {
 	instScreenGui->m_name = "CoreEditorGui";
 
 	CreateVideoRect({
-		.Video{"rtsp://127.0.0.1:8554"}, //.Video{"res://test.mp4"},//.
+		.Video{"res://test.mp4"},//.Video{"rtsp://127.0.0.1:8554/mystream"}
 		.Looped{true},
 		.Size{0.f, 512, 0.f, 256},
 		.Position{1, -550, 0.f, 0},

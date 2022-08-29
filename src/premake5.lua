@@ -9,6 +9,8 @@ shared_includes = {
     "../third_party/freetype2",
     "../third_party/harfbuzz",
     "../third_party/libpng16",
+    "../third_party/curl",
+    "../third_party/zlib",
     "../third_party/ffmpeg-2.0"
 }
 
@@ -81,7 +83,8 @@ project "Engine"
         "avutil",
         "bass",
         "swscale",
-        "swresample"
+        "swresample",
+  
     }
 
     filter "configurations:Debug"
@@ -91,7 +94,9 @@ project "Engine"
         links {
             "assimp-vc140-mtd",
             "VulkanMemoryAllocatord",
-            "freetyped"
+            "freetyped",
+            "zlibd",
+            "libcurl_imp"
         }
     filter "configurations:Release"
         defines {"_RELEASE", "%{wks.name}_RELEASE"}
@@ -100,7 +105,9 @@ project "Engine"
         links {
             "assimp-vc140-mt",
             "VulkanMemoryAllocator",
-            "freetype"
+            "freetype",
+            "zlib",
+            "libcurl_imp"
         }
     filter "configurations:Retail"
         defines {"_RETAIL", "%{wks.name}_RETAIL"}
@@ -109,7 +116,9 @@ project "Engine"
         links {
             "assimp-vc140-mt",
             "VulkanMemoryAllocator",
-            "freetype"
+            "freetype",
+            "zlib",
+            "libcurl_imp"
         }
 
     filter "system:windows"
