@@ -75,7 +75,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_DEBUG;XM3_DEBUG;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN32_WINNT=0x0601;SYSTEM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;LMLE_DEBUG;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN32_WINNT=0x0601;SYSTEM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;D:\SDK\Vulkan SDK 1-3-216-0\Include;..\third_party;..\third_party\VulkanMemoryAllocator;..\third_party\volk;..\third_party\spirv_reflect;..\third_party\tinygltf;..\third_party\stb;..\third_party\freetype2;..\third_party\harfbuzz;..\third_party\libpng16;..\third_party\ffmpeg-2.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -161,6 +161,7 @@
     <ClInclude Include="ui\ui_components.hpp" />
     <ClInclude Include="ui\ui_enumerations.hpp" />
     <ClInclude Include="ui\ui_render_components.hpp" />
+    <ClInclude Include="ui\video_rect.hpp" />
     <ClInclude Include="ui\viewport_gui.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +183,7 @@
     <ClCompile Include="ui\text_gui_object.cpp" />
     <ClCompile Include="ui\text_info_stream.cpp" />
     <ClCompile Include="ui\text_label.cpp" />
+    <ClCompile Include="ui\video_rect.cpp" />
     <ClCompile Include="ui\viewport_gui.cpp" />
   </ItemGroup>
   <ItemGroup>

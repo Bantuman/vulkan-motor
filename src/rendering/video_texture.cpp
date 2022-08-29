@@ -59,8 +59,7 @@ uint32_t VideoTexture::get_num_mip_maps() const {
 
 FrameStatus VideoTexture::iterate_frame()
 {
-	int readFrame = 0;
-	readFrame = av_read_frame(m_videoFormatContext, &m_avPacket);
+	int readFrame = av_read_frame(m_videoFormatContext, &m_avPacket);
 	if (readFrame >= 0)
 	{
 		if (m_avPacket.stream_index == m_streamIndex)
@@ -198,8 +197,6 @@ std::shared_ptr<VideoTexture> VideoTextureLoader::load(RenderContext& ctx, const
 #endif
 		filePath = g_fileSystem->get_file_system_path(fileName);
 	av_register_all();
-
-
 
 	auto result = avformat_open_input(&videoFormatContext, filePath.data(), NULL, &options);
 	RET_EMPTY(result < 0);

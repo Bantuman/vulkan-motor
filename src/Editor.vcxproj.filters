@@ -78,6 +78,9 @@
     <ClInclude Include="ui\ui_render_components.hpp">
       <Filter>ui</Filter>
     </ClInclude>
+    <ClInclude Include="ui\video_rect.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
     <ClInclude Include="ui\viewport_gui.hpp">
       <Filter>ui</Filter>
     </ClInclude>
@@ -135,6 +138,9 @@
       <Filter>ui</Filter>
     </ClCompile>
     <ClCompile Include="ui\text_label.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\video_rect.cpp">
       <Filter>ui</Filter>
     </ClCompile>
     <ClCompile Include="ui\viewport_gui.cpp">

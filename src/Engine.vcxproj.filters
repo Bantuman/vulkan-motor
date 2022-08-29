@@ -108,6 +108,9 @@
     <ClInclude Include="asset\texture_cache.hpp">
       <Filter>asset</Filter>
     </ClInclude>
+    <ClInclude Include="asset\video_cache.hpp">
+      <Filter>asset</Filter>
+    </ClInclude>
     <ClInclude Include="core\ambience.hpp">
       <Filter>core</Filter>
     </ClInclude>
@@ -309,6 +312,9 @@
     <ClInclude Include="net\web.hpp">
       <Filter>net</Filter>
     </ClInclude>
+    <ClInclude Include="net\web_file_system.hpp">
+      <Filter>net</Filter>
+    </ClInclude>
     <ClInclude Include="rendering\buffer.hpp">
       <Filter>rendering</Filter>
     </ClInclude>
@@ -420,6 +426,9 @@
     <ClInclude Include="rendering\texture.hpp">
       <Filter>rendering</Filter>
     </ClInclude>
+    <ClInclude Include="rendering\video_texture.hpp">
+      <Filter>rendering</Filter>
+    </ClInclude>
     <ClInclude Include="rendering\vk_common.hpp">
       <Filter>rendering</Filter>
     </ClInclude>
@@ -487,6 +496,9 @@
       <Filter>ui</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_render_components.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\video_rect.hpp">
       <Filter>ui</Filter>
     </ClInclude>
     <ClInclude Include="ui\viewport_gui.hpp">
@@ -620,6 +632,9 @@
     <ClCompile Include="net\web.cpp">
       <Filter>net</Filter>
     </ClCompile>
+    <ClCompile Include="net\web_file_system.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
     <ClCompile Include="rendering\buffer.cpp">
       <Filter>rendering</Filter>
     </ClCompile>
@@ -716,6 +731,9 @@
     <ClCompile Include="rendering\texture.cpp">
       <Filter>rendering</Filter>
     </ClCompile>
+    <ClCompile Include="rendering\video_texture.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
     <ClCompile Include="rendering\vk_initializers.cpp">
       <Filter>rendering</Filter>
     </ClCompile>
@@ -768,6 +786,9 @@
       <Filter>ui</Filter>
     </ClCompile>
     <ClCompile Include="ui\text_label.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\video_rect.cpp">
       <Filter>ui</Filter>
     </ClCompile>
     <ClCompile Include="ui\viewport_gui.cpp">

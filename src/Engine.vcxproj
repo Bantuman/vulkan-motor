@@ -75,7 +75,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>GLM_CONSTEXPR=constexpr;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;GLFW_INCLUDE_VULKAN;TINYGLTF_USE_RAPIDJSON;TINYGLTF_NO_STB_IMAGE_WRITE;_DEBUG;XM3_DEBUG;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN32_WINNT=0x0601;SYSTEM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_NET;GLM_CONSTEXPR=constexpr;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;GLFW_INCLUDE_VULKAN;TINYGLTF_USE_RAPIDJSON;TINYGLTF_NO_STB_IMAGE_WRITE;_DEBUG;LMLE_DEBUG;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN32_WINNT=0x0601;SYSTEM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;core;ecs;file;D:\SDK\Vulkan SDK 1-3-216-0\Include;..\third_party;..\third_party\VulkanMemoryAllocator;..\third_party\volk;..\third_party\spirv_reflect;..\third_party\tinygltf;..\third_party\stb;..\third_party\freetype2;..\third_party\harfbuzz;..\third_party\libpng16;..\third_party\ffmpeg-2.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -90,7 +90,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>glfw3.lib;harfbuzz.lib;png16.lib;libbz2.lib;assimp-vc140-mtd.lib;VulkanMemoryAllocatord.lib;freetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;harfbuzz.lib;png16.lib;libbz2.lib;avcodec.lib;avdevice.lib;avfilter.lib;avformat.lib;avutil.lib;bass.lib;swscale.lib;swresample.lib;assimp-vc140-mtd.lib;VulkanMemoryAllocatord.lib;freetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>D:\SDK\Vulkan SDK 1-3-216-0\Lib;..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -98,7 +98,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>GLM_CONSTEXPR=constexpr;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;GLFW_INCLUDE_VULKAN;TINYGLTF_USE_RAPIDJSON;TINYGLTF_NO_STB_IMAGE_WRITE;_RELEASE;XM3_RELEASE;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN32_WINNT=0x0601;SYSTEM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_NET;GLM_CONSTEXPR=constexpr;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;GLFW_INCLUDE_VULKAN;TINYGLTF_USE_RAPIDJSON;TINYGLTF_NO_STB_IMAGE_WRITE;_RELEASE;LMLE_RELEASE;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN32_WINNT=0x0601;SYSTEM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;core;ecs;file;D:\SDK\Vulkan SDK 1-3-216-0\Include;..\third_party;..\third_party\VulkanMemoryAllocator;..\third_party\volk;..\third_party\spirv_reflect;..\third_party\tinygltf;..\third_party\stb;..\third_party\freetype2;..\third_party\harfbuzz;..\third_party\libpng16;..\third_party\ffmpeg-2.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Full</Optimization>
@@ -118,7 +118,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>glfw3.lib;harfbuzz.lib;png16.lib;libbz2.lib;assimp-vc140-mt.lib;VulkanMemoryAllocator.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;harfbuzz.lib;png16.lib;libbz2.lib;avcodec.lib;avdevice.lib;avfilter.lib;avformat.lib;avutil.lib;bass.lib;swscale.lib;swresample.lib;assimp-vc140-mt.lib;VulkanMemoryAllocator.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>D:\SDK\Vulkan SDK 1-3-216-0\Lib;..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -126,7 +126,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>GLM_CONSTEXPR=constexpr;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;GLFW_INCLUDE_VULKAN;TINYGLTF_USE_RAPIDJSON;TINYGLTF_NO_STB_IMAGE_WRITE;_RETAIL;XM3_RETAIL;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN32_WINNT=0x0601;SYSTEM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_NET;GLM_CONSTEXPR=constexpr;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;GLFW_INCLUDE_VULKAN;TINYGLTF_USE_RAPIDJSON;TINYGLTF_NO_STB_IMAGE_WRITE;_RETAIL;LMLE_RETAIL;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN32_WINNT=0x0601;SYSTEM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;core;ecs;file;D:\SDK\Vulkan SDK 1-3-216-0\Include;..\third_party;..\third_party\VulkanMemoryAllocator;..\third_party\volk;..\third_party\spirv_reflect;..\third_party\tinygltf;..\third_party\stb;..\third_party\freetype2;..\third_party\harfbuzz;..\third_party\libpng16;..\third_party\ffmpeg-2.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Full</Optimization>
@@ -146,7 +146,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>glfw3.lib;harfbuzz.lib;png16.lib;libbz2.lib;assimp-vc140-mt.lib;VulkanMemoryAllocator.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;harfbuzz.lib;png16.lib;libbz2.lib;avcodec.lib;avdevice.lib;avfilter.lib;avformat.lib;avutil.lib;bass.lib;swscale.lib;swresample.lib;assimp-vc140-mt.lib;VulkanMemoryAllocator.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>D:\SDK\Vulkan SDK 1-3-216-0\Lib;..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -169,6 +169,7 @@
     <ClInclude Include="asset\rigged_mesh_loader.hpp" />
     <ClInclude Include="asset\scene_loader.hpp" />
     <ClInclude Include="asset\texture_cache.hpp" />
+    <ClInclude Include="asset\video_cache.hpp" />
     <ClInclude Include="core\ambience.hpp" />
     <ClInclude Include="core\ancestry_changed_callbacks.hpp" />
     <ClInclude Include="core\application.hpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="math\vector3.hpp" />
     <ClInclude Include="math\vector4.hpp" />
     <ClInclude Include="net\web.hpp" />
+    <ClInclude Include="net\web_file_system.hpp" />
     <ClInclude Include="rendering\buffer.hpp" />
     <ClInclude Include="rendering\buffer_component_pool.hpp" />
     <ClInclude Include="rendering\buffer_vector.hpp" />
@@ -273,6 +275,7 @@
     <ClInclude Include="rendering\static_mesh.hpp" />
     <ClInclude Include="rendering\text_bitmap.hpp" />
     <ClInclude Include="rendering\texture.hpp" />
+    <ClInclude Include="rendering\video_texture.hpp" />
     <ClInclude Include="rendering\vk_common.hpp" />
     <ClInclude Include="rendering\vk_initializers.hpp" />
     <ClInclude Include="rendering\vk_profiler.hpp" />
@@ -296,6 +299,7 @@
     <ClInclude Include="ui\ui_components.hpp" />
     <ClInclude Include="ui\ui_enumerations.hpp" />
     <ClInclude Include="ui\ui_render_components.hpp" />
+    <ClInclude Include="ui\video_rect.hpp" />
     <ClInclude Include="ui\viewport_gui.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -341,6 +345,7 @@
     <ClCompile Include="file\path_utils.cpp" />
     <ClCompile Include="math\bone_transform.cpp" />
     <ClCompile Include="net\web.cpp" />
+    <ClCompile Include="net\web_file_system.cpp" />
     <ClCompile Include="rendering\buffer.cpp" />
     <ClCompile Include="rendering\command_buffer.cpp" />
     <ClCompile Include="rendering\cube_map.cpp" />
@@ -373,6 +378,7 @@
     <ClCompile Include="rendering\static_mesh.cpp" />
     <ClCompile Include="rendering\text_bitmap.cpp" />
     <ClCompile Include="rendering\texture.cpp" />
+    <ClCompile Include="rendering\video_texture.cpp" />
     <ClCompile Include="rendering\vk_initializers.cpp" />
     <ClCompile Include="rendering\vk_profiler.cpp" />
     <ClCompile Include="ui\font_id.cpp" />
@@ -391,6 +397,7 @@
     <ClCompile Include="ui\text_gui_object.cpp" />
     <ClCompile Include="ui\text_info_stream.cpp" />
     <ClCompile Include="ui\text_label.cpp" />
+    <ClCompile Include="ui\video_rect.cpp" />
     <ClCompile Include="ui\viewport_gui.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,6 @@
 
 *.sln
 temp/*
-bin/*
 lib/Editor_Debug.lib
 lib/Editor_Release.lib
 lib/Engine_Debug.lib
